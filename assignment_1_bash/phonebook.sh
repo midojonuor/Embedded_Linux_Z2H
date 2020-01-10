@@ -148,28 +148,34 @@ function deleteContactByName() {
 
 checkDataBase
 
-case $1 in
-	-i ) insertName
-		;;
+if [[ $# > 1 ]]; then
+	#statements
+	echo "cannot pass more than one argument."
 
-	-v ) viewAllContact
-		;;
+else
+	case $1 in
+		-i ) insertName
+			;;
 
-	-s ) searchByContact
-		;;
+			-v ) viewAllContact
+			;;
 
-	-e ) deleteAllRecords
-		;;
+			-s ) searchByContact
+			;;
 
-	-d ) deleteContactByName
-		;;
+			-e ) deleteAllRecords
+			;;
+
+			-d ) deleteContactByName
+			;;
 
 
-	*)
-	echo "choose one of the following options:"
-	echo "	-i	Insert new contact name and number."
-	echo "	-v	View all saved contacts details."
-	echo "	-s	Search by contact name."
-	echo "	-e	Delete all records."
-	echo "	-d	Delete only one contact name."
-esac
+			*)
+			echo "choose one of the following options:"
+			echo "	-i	Insert new contact name and number."
+			echo "	-v	View all saved contacts details."
+			echo "	-s	Search by contact name."
+			echo "	-e	Delete all records."
+			echo "	-d	Delete only one contact name."
+		esac
+fi
